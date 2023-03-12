@@ -1,0 +1,89 @@
+#btn1{
+    /* width: 10px; */
+    /* height: 10px; */
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    margin: 40px;
+    padding: 40px;
+    background-color: greenyellow;
+    width: 30%;
+}
+
+#btn2{
+    /* width: 10px; */
+    /* height: 10px; */
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    margin: 40px;
+    padding: 40px;
+    text-align: center;
+    /* color: green; */
+    background-color: greenyellow;
+
+    
+}
+
+#btn3{
+    /* width: 10px; */
+    /* height: 10px; */
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    background-color: greenyellow;
+
+    margin: 35px;
+    padding: 40px;
+}
+
+#btn4{
+    /* width: 10px; */
+    /* height: 10px; */
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    margin: 40px;
+    background-color: greenyellow;
+    padding: 40px;
+    cursor: pointer;
+}
+
+.maindiv3{
+    width: 500px;
+	height: 500px;
+	position: relative;
+	margin: 6% auto;
+	background: #FFF;
+	padding: 5px;
+	overflow: hidden;
+    border: 1px solid black;
+    border-radius: 9px;
+}
+
+.docpa{
+    border: 1px solid black;
+    margin: 40px;
+
+}
+
+.pharhea{
+    border: 1px solid black;
+    margin: 40px;
+}
+
+.maindiv2{
+    border: 1px solid black;
+    height: 100%;
+	width: 100%;
+	background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+}
+
+.doctor{
+    border: 1px solid black;
+    width: 200px;
+}
+.patient{
+    border: 1px solid black;
+    
+    width: 200px;
+}

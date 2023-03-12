@@ -1,0 +1,27 @@
+.row{
+    border: 3px solid black;
+    height: 100vh;
+    display: flex;
+}
+.maindiv{
+    display: grid;
+}
+.col-md-5{
+    border: 3px solid black;
+    /* width: 100vw; */
+    display: flex;
+}
+
+.c-button{
+    background: linear-gradient(180deg, #fdc50f 26.71%, #fb982f 99.36%);
+  box-shadow: 0px 20px 24px 3px rgba(251, 161, 40, 0.42);
+  border-radius: 34px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 11px 26px 11px 26px;
+}
+.card1{
+    border: 1px solid black;
+    /* display: block; */
+}

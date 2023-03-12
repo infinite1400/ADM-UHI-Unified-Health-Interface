@@ -1,0 +1,45 @@
+
+[
+{
+    "name":"Murari Pandey",
+    "email":"murpan@gmail.com",
+    "phone":"123",
+    "registration_number":"CMO/ALLD/23451",
+    "location":"Meerapur",
+    "qualification":"M.S",
+    "speciality":"Gynaecologist",
+    "experience":"15",
+    "fees":"500",
+    "rating":"5",
+    "password":"xyz",
+    "cpassword":"xyz"
+},
+{
+    "name":"Dev Mahajan",
+    "email":"devved@gmail.com",
+    "phone":"123",
+    "registration_number":"CMO/ALLD/23451",
+    "location":"Meerapur",
+    "qualification":"M.S",
+    "speciality":"Gastrologist",
+    "experience":"15",
+    "fees":"500",
+    "rating":"5",
+    "password":"xyz",
+    "cpassword":"xyz"
+},
+{
+    "name":"Sanjay Tiwari",
+    "email":"sanjay@gmail.com",
+    "phone":"123",
+    "registration_number":"CMO/ALLD/23451",
+    "location":"Meerapur",
+    "qualification":"M.S",
+    "speciality":"Gastrologist",
+    "experience":"15",
+    "fees":"500",
+    "rating":"3.5",
+    "password":"xyz",
+    "cpassword":"xyz"
+}
+]
