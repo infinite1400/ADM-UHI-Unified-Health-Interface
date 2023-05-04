@@ -44,19 +44,20 @@ function Appointment() {
   const PostData = async (e) => {
     e.preventDefault();
 
-    const doctoremail = id.id;
-    // const patientemail=read_cookie('ashutosh')
-    const patientname = read_cookie('harshita')
-    const patientnumber = read_cookie('tammana')
-    ///////
+    const doctoremail=id.id;
+    const patientemail=read_cookie('ashutosh')
+   // console.log(patientemail)
+    const patientname=read_cookie('harshita')
+    const patientnumber=read_cookie('tammana')
+        ///////
 
     const res = await fetch("/docapp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        doctoremail: doctoremail, patientname: patientname, patientnumber: patientnumber
+      body:JSON.stringify({
+        patientemail:patientemail,doctoremail:doctoremail,patientname:patientname,patientnumber:patientnumber
       })
     });
 
