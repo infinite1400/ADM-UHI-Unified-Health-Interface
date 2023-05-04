@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
 const cookie_key = "pandey";
 console.log("lol")
-const Profile = ({ userLogin }) => {
+const URL = "https://www.google.com/maps/place/";
+const DoctorProfileAppointment = ({ userLogin }) => {
   bake_cookie(cookie_key, userLogin);
 
   const userLogins = read_cookie(cookie_key);
@@ -11,12 +12,6 @@ const Profile = ({ userLogin }) => {
 
   return (
     <div className={styles.container}>
-      {/* <div className={styles.heading}>
-		        <p className={styles.title_tab}>Name</p>
-		        <p className={styles.genre_tab}>Email</p>
-		        <p className={styles.genre_tab}>Phone</p>
-		        <p className={styles.rating_tab}>Age</p>
-		    </div> */}
       {userLogins.map((movie) => (
         <div className={styles.maindiv}>
           
@@ -24,7 +19,7 @@ const Profile = ({ userLogin }) => {
               {/* <div className='container-mt-5'> */}
               {/* <div className='signin-content'> */}
               <div className={styles.signinform}>
-                <h1 className={styles.formtitle}>Profile</h1>
+                <h1 className={styles.formtitle}>DoctorProfileAppointment</h1>
                 <form className={styles.registerform} id="register-form">
                   <div className={styles.formgroup}>
                     <div className={styles.name}>
@@ -47,7 +42,7 @@ const Profile = ({ userLogin }) => {
 
                   <div className={styles.formgroup}>
                     <div className={styles.name}>
-                      <p>Location</p> <p>:</p> <p>{movie.location}</p>
+                      <p>Location</p> <p>:</p> <a href={URL+movie.location} target="_blank"> <p>{movie.location}</p></a>
                     </div>
                   </div>
                   <div className={styles.formgroup}>
@@ -78,4 +73,4 @@ const Profile = ({ userLogin }) => {
     </div>
   );
 };
-export default Profile;
+export default DoctorProfileAppointment;

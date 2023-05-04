@@ -1,88 +1,134 @@
-.signup {
-	margin-top: 10px;
-	margin-left: 600px;
-
-	width: 20%;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
 }
-
-.signup-form {
-	width: 400px;
-	background: #fff;
-	border: 1px solid #dddfe2;
-	box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
-	border-radius: 8px;
-	padding: 1rem;
-	align-items: center;
-	text-align: center;
+.maindivdoctorregister{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #71B7E6, #9B59B6);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
 }
-
-.signup>input {
-	border-radius: 8px;
-	border: 2px solid #dddfe2;
-	outline: none;
-	color: #1d2129;
-	margin: 0.5rem 0;
-	padding: 0.5rem 0.75rem;
-	width: 92%;
-	font-size: 1rem;
+.wrapper{
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
 }
-
-#signup {
-	background: #1877f2;
-	border: 1px solid #1877f2;
-	color: #fff;
-	font-size: 1.25rem;
-	padding: 0.5rem;
-	margin: 0.5rem 0;
-	border-radius: 8px;
-	outline: none;
-	cursor: pointer;
+#name{
+	margin-left: 0;
 }
-
-.register-form {
-	display: inline-block;
-	text-align: right;
-}
-
-#name {
-	margin-left: 40px;
-}
-
-#Age{
-	margin-left: 40px;
-}
-
-#email {
-	margin-left: 40px;
-}
-
-#password {
-	margin-left: 40px;
-}
-
 #phone{
-	margin-left: 40px;
+	margin-left: 0;
+}
+#password{
+	margin-left: 0;
+}
+/* .doctorregisterinput{
+	display: inline;
+} */
+.wrapper .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+.wrapper .title::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 40px;
+    background: linear-gradient(135deg, #71B7E6, #9B59B6);
+}
+.wrapper .form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+.form .user-details .doctorregisterinput{
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+.user-details .doctorregisterinput .input{
+    height: 45px;
+    width: 100%;
+}
+.user-details .doctorregisterinput .details{
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
 }
 
-/* .container{
-	background-color: antiquewhite;
-	padding-top: 10px;
-	padding-left: 10px;
-	padding-bottom: 10px;
-	padding-right: 10px;
+.user-details .doctorregisterinput .input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all .3s ease;
 }
-.form-group{
-	width: 100%;
+.user-details .doctorregisterinput .input:focus,
+.user-details .doctorregisterinput .input:valid{
+    border-color: #9B59B6;
 }
-input{
-	padding: 8px;
-	margin: 8px 0;
-	margin-left: 20px;
-	box-sizing: border-box;
-	border: 2px solid red;
+
+
+
+.form .input[type="radio"]{
+    display: none;
 }
-form-button :hover{
-	cursor: pointer;
-	opacity: 0.7;
+
+.form .button{
+    height: 45px;
+    margin: 45px 0;
 }
- */
+.form .button .input{
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #71B7E6, #9B59B6);
+}
+.form .button .input:hover{
+    background: linear-gradient(-135deg, #71B7E6, #9B59B6);
+}
+
+/* Media Query */
+@media (max-width: 584px) {
+    .wrapper{
+        max-width: 100%;
+    }
+    .form .user-details .doctorregisterinput{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .gender-details .category{
+        width: 100%;
+    }
+    .wrapper .form .user-details{
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+    .user-details::-webkit-scrollbar{
+        width: 0;
+    }
+}

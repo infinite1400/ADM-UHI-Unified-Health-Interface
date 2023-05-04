@@ -21,12 +21,15 @@ import DoctorProfile from './components/Docter/doctorprofile'
 // import Finddoctorprofile from './components/Patient/profile'
 import Appointment from './components/Patient/appointment'
 import Appointmenthistory from './components/Docter/appointmenthistory'
+import Checklocationpage from './components/Patient/checklocationpage'
+import { checkTargetForNewValues } from 'framer-motion'
 const App = () => {
   return (
     <>
       {/* <Navbar/> */}
       <Routes>
         <Route exact path="/" element={<Landing />} />
+        <Route exact path="/checklocationpage" element={<Checklocationpage />}/>
         <Route exact path="/Doctor" element={<Doctor />} />
         <Route exact path="/DoctorMain" element={<DoctorMain />} />
         <Route exact path="/DoctorMain/history" element={<Appointmenthistory />} />
@@ -46,9 +49,7 @@ const App = () => {
         <Route exact path="/about" element={<About />} />
         <Route 
           path="/PatientMain/finddoctor/:id"
-          element={<Appointment/>
-
-          }
+          element={<Appointment/>}
         />
       </Routes>
     </>

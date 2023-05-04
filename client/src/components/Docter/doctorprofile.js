@@ -45,6 +45,7 @@ function DoctorProfile() {
                 <div className='body'>
                     <div className='table_container'>
                          {console.log(obj.userLogin)}
+                         {console.log("hello")}
                         { <Profile userLogin={obj.userLogin}/> }
                     </div>
                 </div>

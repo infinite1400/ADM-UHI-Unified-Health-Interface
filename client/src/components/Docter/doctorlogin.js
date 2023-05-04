@@ -51,13 +51,14 @@ const Doctorlogin = () => {
 					<form method='POST' className='register-form' id='register-form'>
 
 						<div className='form-group'>
-							E-mail {" "}: <input type="email" name="email" id="email" autoComplete='off'
+							E-mail {" "}: <input type="email" name="email" id="email" autoComplete='off' required
 								placeholder='Enter Your E-mail' value={user.email} onChange={handleInputs} />
 						</div>
 
 						<div className='form-group'>
-							Password : <input type="password" name="password" id="password" autoComplete='off'
+							Password : <input type="password" name="password" id="password" autoComplete='off' required
 								placeholder='Enter Password' value={user.password} onChange={handleInputs} />
+
 						</div>
 
 					</form>

@@ -47,6 +47,7 @@
 	transition: all 0.1s ease;
 	background-color: white;
 	border-radius: 4px;
+	width: 1400px;
 }
 
 .movie:hover {
@@ -102,4 +103,7 @@
 .movie_rating {
 	font-size: 16px;
 	font-weight: 400;
+}
+.container{
+	width: 1418px;
 }
