@@ -37,7 +37,8 @@ function Appointment() {
             e.preventDefault();
 
     const doctoremail=id.id;
-    // const patientemail=read_cookie('ashutosh')
+    const patientemail=read_cookie('ashutosh')
+   // console.log(patientemail)
     const patientname=read_cookie('harshita')
     const patientnumber=read_cookie('tammana')
         ///////
@@ -48,7 +49,7 @@ function Appointment() {
         "Content-Type":"application/json"
       },
       body:JSON.stringify({
-        doctoremail:doctoremail,patientname:patientname,patientnumber:patientnumber
+        patientemail:patientemail,doctoremail:doctoremail,patientname:patientname,patientnumber:patientnumber
       })
     });
 

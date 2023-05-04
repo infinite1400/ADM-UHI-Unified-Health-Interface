@@ -21,6 +21,10 @@ import DoctorProfile from './components/Docter/doctorprofile'
 // import Finddoctorprofile from './components/Patient/profile'
 import Appointment from './components/Patient/appointment'
 import Appointmenthistory from './components/Docter/appointmenthistory'
+import Message from "../src/messagess/messages"
+import Chatbox from './components/chatbox/chatbox'
+
+// import Chat from './components/chatbox/chat'
 const App = () => {
   return (
     <>
@@ -44,12 +48,16 @@ const App = () => {
         <Route exact path="/patient/login" element={<Patientlogin />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/about" element={<About />} />
+        {/* <Route exact path="/chat" element={<Chat />} /> */}
         <Route 
           path="/PatientMain/finddoctor/:id"
           element={<Appointment/>
 
           }
         />
+        <Route exact path ="/chats" element={<Message/>}/>
+        <Route exact path="/DoctorMain/history/:id"
+        element={<Chatbox/>}/>
       </Routes>
     </>
   )
