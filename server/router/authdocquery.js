@@ -8,7 +8,8 @@ const Doctor=require('../model/doctorSchema');
 
 router.get('/doctor', async (req,res)=>{
     try {
-
+      const page = parseInt(req.query.page) -1 || 0;
+      const limit = parseInt(req.query.limit) || 5;
        let speciality=req.query.speciality||"All";
        const Specialarr=[
         "Gastrologist",
@@ -36,9 +37,19 @@ router.get('/doctor', async (req,res)=>{
        .where("speciality")
        .in([...speciality])
        .sort(Sortby)
+       .skip(page*limit)
+       .limit(limit)
+
+      const total = await Doctor.countDocuments({
+        speciality:{$in:[...speciality]},
+        name:{$regex :search,$options:"i"},
+      })
 
        const response={
         error:false,
+        total,
+        page:page+1,
+        limit,
         database,
         speciality:Specialarr,
        };

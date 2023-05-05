@@ -91,9 +91,9 @@ function Appointment() {
       <Link to='/PatientMain'>
         <input type='submit' onClick={PostData} />
       </Link>
-      {/* <Link to="/chatbox">
+      <Link to="/chatbox">
         <button>Chatbox</button>
-      </Link> */}
+      </Link>
     </div>
   )
 }

@@ -1,0 +1,33 @@
+.containerP {
+	/* bottom: 0; */
+	/* left: 0; */
+	/* height: 45px; */
+    width: 100%;
+	display: flex;
+    justify-content: center;
+    /* border-radius: 10px solid black; */
+    /* margin-left: 100%; */
+}
+
+.page_btnP {
+	outline: none;
+	border: none;
+	font-size: 14px;
+	font-weight: 500;
+	border-radius: 5px;
+	outline: none;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 5px;
+	cursor: pointer;
+	background-color: white;
+}
+
+.activeP {
+	background-color: blue;
+	color: white;
+}
+
