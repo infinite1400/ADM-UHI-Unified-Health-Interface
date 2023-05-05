@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import axios from 'axios'
 import DoctorProfileAppointment from './DoctorProfile1';
+import { Navigate } from 'react-router-dom';
 const URL = "https://www.google.com/maps/place/";
 const URL1 = "http://localhost:3000/doctorDisp";
 
 function Appointment() {
 
   const [email, setemail] = useState("")
+  const navigate=useNavigate();
   const id = useParams()
   console.log(id)
   console.log(id.id)
@@ -42,6 +44,8 @@ function Appointment() {
 
 
   const PostData = async (e) => {
+    
+
     e.preventDefault();
 
     const doctoremail=id.id;
@@ -70,6 +74,8 @@ function Appointment() {
       window.alert("Registration Successful");
       console.log("Successful Registration");
     }
+    console.log("Hello World")
+
   }
 
 
@@ -88,9 +94,7 @@ function Appointment() {
       <h1>hello i'm in Appointment page.</h1>
       {console.log(obj.userLogin)}
       { <DoctorProfileAppointment userLogin={obj.userLogin}/>}
-      <Link to='/PatientMain'>
-        <input type='submit' onClick={PostData} />
-      </Link>
+        <button type='submit' onClick={PostData} ><Link to='/Patientmain'>Submit</Link></button>
       {/* <Link to="/chatbox">
         <button>Chatbox</button>
       </Link> */}
