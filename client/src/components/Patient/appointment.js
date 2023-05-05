@@ -95,7 +95,7 @@ function Appointment() {
       {console.log(obj.userLogin)}
       { <DoctorProfileAppointment userLogin={obj.userLogin}/>}
         <button type='submit' onClick={PostData} ><Link to='/Patientmain'>Submit</Link></button>
-      {/* <Link to="/chatbox">
+      {/* /* <Link to="/chatbox">
         <button>Chatbox</button>
       </Link> */}
     </div>
