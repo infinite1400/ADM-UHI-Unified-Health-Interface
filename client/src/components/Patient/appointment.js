@@ -82,7 +82,7 @@ function Appointment() {
   //   ))
   // URl+=obj.userLogin.location
   // console.log(URL+((obj.userLogin).map()))
-  
+  // const link1=`http://localhost:3001/PatientMain/finddoctor/${id}/chatbox`;
   return (
     <div>
       <h1>hello i'm in Appointment page.</h1>
@@ -91,6 +91,9 @@ function Appointment() {
       <Link to='/PatientMain'>
         <input type='submit' onClick={PostData} />
       </Link>
+      {/* <Link to="/chatbox">
+        <button>Chatbox</button>
+      </Link> */}
     </div>
   )
 }

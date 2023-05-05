@@ -37,3 +37,23 @@
       background-color: rgb(245, 241, 241);
       color: black;
   }
+
+  .chatboxtextarea{
+    /* border-radius: 100px; */
+    /* text-align: center; */
+    display: block;
+  margin: 0 auto;
+  text-align: center;
+  
+}
+#chats{
+    border-radius: 10px;
+    width: 400px;
+  }
+
+.buttonsend{
+margin: 10px;
+width: 100px;
+size: 100px;
+color: green;
+}

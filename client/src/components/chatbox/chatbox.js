@@ -3,8 +3,8 @@ import { Link, useParams } from 'react-router-dom';
 import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies';
 import axios from 'axios';
 import './chatbox.css';
+import { useRef } from 'react';
 import { format } from 'timeago.js';
-
 const URL = 'http://localhost:3001/DoctorMain/history';
 const URL1 = 'http://localhost:3000/newchat/';
 const URL2 = 'http://localhost:3000/newmessage/';
@@ -34,6 +34,8 @@ const Chatbox = () => {
 
   const [currentmessage, Setcurrentmessage] = useState([{}]);
 
+  const [message,newmessage]= useState([]);
+
   useEffect(() => {
     const getconversation = async () => {
       try {
@@ -42,7 +44,7 @@ const Chatbox = () => {
         console.log(res);
       } catch (err) {
         console.log(err);
-      }{}
+      }
     };
     getconversation();
   }, [doctormail]);
@@ -75,9 +77,39 @@ const Chatbox = () => {
 
   // const own = currentmessage[0];
   // console.log(own);
+
+  const sendmessage= async (e)=>{
+      // console.log(e)
+      e.preventDefault()
+      const body={
+        sender:doctormail,
+        receiver:patientemail,
+        conversationId:conversationId,
+        text:message
+      }
+
+      try {
+       const res= await axios.post(URL2,body)
+       console.log(res)
+       Setcurrentmessage([...currentmessage,res.data]);
+      } catch (error) {
+        console.log(error)
+      }
+      newmessage("")
+  }
+  const chatboxRef = useRef();
+
   
+
+  useEffect(() => {
+      // console.log("hello world")
+    chatboxRef.current.scrollIntoView();
+  });
+
+
   return (
     <>
+    {/* {window.scrollTo(0, document.body.scrollHeight)} */}
     {currentmessage.map((own)=>(
       <div className={own.sender ? 'message own' : 'message'}>
       <div className="messageTop">
@@ -87,14 +119,22 @@ const Chatbox = () => {
       <div className="messageBottom">{format(own.createdAt)}</div>
     </div>
     ))}
-    {/* <div className={own.sender ? 'message own' : 'message'}>
-      <div className="messageTop">
-        <img className="messageImg" alt="pics" />
-        <p className="messageText">{own.text}</p>
+    
+   <div>
+
+      {/* <input type="text" name="chats" id="chats" ></input> */}
+      <div className='chatboxtextarea' ref={chatboxRef}>
+      <textarea  name="chats" id="chats" rows="4" columns="50"
+      onChange={(e)=>newmessage(e.target.value)}
+      value={message}></textarea>
+      <button className='buttonsend' type="button" name="sendchats" id="sendchats"
+      onClick={sendmessage}>Send</button>
       </div>
-      <div className="messageBottom">{format(own.createdAt)}</div>
-    </div> */}
-    </>
+   </div>
+
+
+  </>
+    
   );
 };
 
