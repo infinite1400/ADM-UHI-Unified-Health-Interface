@@ -48,20 +48,20 @@ function Appointment() {
 
     e.preventDefault();
 
-    const doctoremail = id.id;
-    const patientemail = read_cookie('ashutosh')
-    // console.log(patientemail)
-    const patientname = read_cookie('harshita')
-    const patientnumber = read_cookie('tammana')
-    ///////
+    const doctoremail=id.id;
+    const patientemail=read_cookie('ashutosh')
+   // console.log(patientemail)
+    const patientname=read_cookie('harshita')
+    const patientnumber=read_cookie('tammana')
+        ///////
 
     const res = await fetch("/docapp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        patientemail: patientemail, doctoremail: doctoremail, patientname: patientname, patientnumber: patientnumber
+      body:JSON.stringify({
+        patientemail:patientemail,doctoremail:doctoremail,patientname:patientname,patientnumber:patientnumber
       })
     });
 
@@ -85,26 +85,16 @@ function Appointment() {
   }
 
 
-  // console.log((obj.userLogin).map((xx)=>(
-  //   console.log(xx.location)
-  // )))
-  // obj.userLogin.map((murari) => (
-  //   (console.log(murari.location))
-  //   // (URL+=(murari.location))
-  //   ))
-  // URl+=obj.userLogin.location
-  // console.log(URL+((obj.userLogin).map()))
-  // const link1=`http://localhost:3001/PatientMain/finddoctor/${id}/chatbox`;
   return (
     <div>
       <h1>hello i'm in Appointment page.</h1>
       {console.log(obj.userLogin)}
-      {<DoctorProfileAppointment userLogin={obj.userLogin} />}
-      {/* <button type='submit' onClick={PostData}> */}
-      <button type='submit' onClick={PostData}><Link to='/PatientMain/finddoctor'>SUBMIT</Link></button>
+      { <DoctorProfileAppointment userLogin={obj.userLogin}/>}
+        <button type='submit' onClick={PostData} ><Link to='/Patientmain'>Submit</Link></button>
       {/* <Link to="/chatbox">
         <button>Chatbox</button>
       </Link> */}
+      <button type='submit' onClick={Chat}>Chatbox</button>
     </div>
   )
 }
