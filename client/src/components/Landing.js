@@ -14,7 +14,7 @@ function Landing() {
             <div class="landing">
                 <div class="landing-content-email">
                     <h1 className='h1'>Unified Health Interface</h1>
-                    <p>Unified Health Interface is a organisation.</p>
+                    <p>Unified Health Interface is an organisation.</p>
                 </div>
                 <div class="landing-content-image">
                     <div class="loader-container">

@@ -44,20 +44,20 @@ function Appointment() {
   const PostData = async (e) => {
     e.preventDefault();
 
-    const doctoremail=id.id;
-    const patientemail=read_cookie('ashutosh')
-   // console.log(patientemail)
-    const patientname=read_cookie('harshita')
-    const patientnumber=read_cookie('tammana')
-        ///////
+    const doctoremail = id.id;
+    const patientemail = read_cookie('ashutosh')
+    // console.log(patientemail)
+    const patientname = read_cookie('harshita')
+    const patientnumber = read_cookie('tammana')
+    ///////
 
     const res = await fetch("/docapp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body:JSON.stringify({
-        patientemail:patientemail,doctoremail:doctoremail,patientname:patientname,patientnumber:patientnumber
+      body: JSON.stringify({
+        patientemail: patientemail, doctoremail: doctoremail, patientname: patientname, patientnumber: patientnumber
       })
     });
 
@@ -73,9 +73,9 @@ function Appointment() {
   }
 
 
-    // console.log((obj.userLogin).map((xx)=>(
-    //   console.log(xx.location)
-    // )))
+  // console.log((obj.userLogin).map((xx)=>(
+  //   console.log(xx.location)
+  // )))
   // obj.userLogin.map((murari) => (
   //   (console.log(murari.location))
   //   // (URL+=(murari.location))
@@ -87,13 +87,12 @@ function Appointment() {
     <div>
       <h1>hello i'm in Appointment page.</h1>
       {console.log(obj.userLogin)}
-      { <DoctorProfileAppointment userLogin={obj.userLogin}/>}
-      <Link to='/PatientMain'>
-        <input type='submit' onClick={PostData} />
-      </Link>
-      <Link to="/chatbox">
+      {<DoctorProfileAppointment userLogin={obj.userLogin} />}
+      {/* <button type='submit' onClick={PostData}> */}
+      <button type='submit' onClick={PostData}><Link to='/PatientMain/finddoctor'>SUBMIT</Link></button>
+      {/* <Link to="/chatbox">
         <button>Chatbox</button>
-      </Link>
+      </Link> */}
     </div>
   )
 }
