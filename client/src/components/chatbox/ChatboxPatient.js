@@ -5,30 +5,28 @@ import axios from 'axios';
 import './chatbox.css';
 import { useRef } from 'react';
 import { format } from 'timeago.js';
-const URL = 'http://localhost:3001/DoctorMain/history';
+const URL = 'http://localhost:3001/PatientMain/finddoctor/chat';
 const URL1 = 'http://localhost:3000/newchat/';
 const URL2 = 'http://localhost:3000/newmessage/';
 
-const Chatbox = () => {
-  const docemail = read_cookie('dev');
+function ChatboxPatient() {
+  const patientemail = read_cookie('ashutosh');
   const [email, setemail] = useState('');
   const [currentmsg, setcurrentmsg] = useState(null);
   const { id } = useParams();
-  const patientemail = id;
-  console.log(patientemail);
-
+  const doctoremail = id;
   const fetchdetails = () => {
     fetch(`http://localhost:3001/DoctorMain/history/${id}`)
-      .then((res) => res.json())
-      .then((data) => setemail(data));
+    .then((res) => res.json())
+    .then((data) => setemail(data));
   };
-
+  
   useEffect(() => {
     fetchdetails();
   }, [email]);
-
-const doctormail = read_cookie('dev');
-  console.log(doctormail);
+  
+console.log(patientemail);
+console.log(doctoremail)
 
   const [object, Setobject] = useState([]);
 
@@ -39,7 +37,7 @@ const doctormail = read_cookie('dev');
   useEffect(() => {
     const getconversation = async () => {
       try {
-        const res = await axios.get(URL1 + doctormail);
+        const res = await axios.get(URL1 + patientemail);
         Setobject(res.data);
         console.log(res);
       } catch (err) {
@@ -47,12 +45,12 @@ const doctormail = read_cookie('dev');
       }
     };
     getconversation();
-  }, [doctormail]);
+  }, [doctoremail]);
 
   var conversationId = null;
   for (var j = 0; j < object.length; j++) {
     const arr = object[j].members;
-    if (arr[0] === docemail && arr[1] === patientemail) {
+    if (arr[0] === patientemail && arr[1] === doctoremail) {
       conversationId = object[j]._id;
     }
   }
@@ -83,8 +81,8 @@ const doctormail = read_cookie('dev');
       e.preventDefault()
       if(conversationId === null){
         const body={
-          senderId:doctormail,
-          receiverId:patientemail
+          senderId:patientemail,
+          receiverId:doctoremail
         }
         try {
           const res= await axios.post(URL1,body)
@@ -95,8 +93,8 @@ const doctormail = read_cookie('dev');
     
       }
       const body={
-        sender:doctormail,
-        receiver:patientemail,
+        sender:patientemail,
+        receiver:doctoremail,
         conversationId:conversationId,
         text:message
       }
@@ -120,7 +118,6 @@ const doctormail = read_cookie('dev');
       // console.log("hello world")
     chatboxRef.current.scrollIntoView();
   });
-
 
   return (
     <>
@@ -151,6 +148,6 @@ const doctormail = read_cookie('dev');
   </>
     
   );
-};
+}
 
-export default Chatbox;
+export default ChatboxPatient

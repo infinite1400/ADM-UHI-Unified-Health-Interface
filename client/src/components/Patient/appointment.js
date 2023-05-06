@@ -78,26 +78,23 @@ function Appointment() {
 
   }
 
+  function Chat(e){
+    e.preventDefault();
+    const doctoremail=id.id;
+    navigate(`/PatientMain/finddoctor/chat/${doctoremail}`)
+  }
 
-    // console.log((obj.userLogin).map((xx)=>(
-    //   console.log(xx.location)
-    // )))
-  // obj.userLogin.map((murari) => (
-  //   (console.log(murari.location))
-  //   // (URL+=(murari.location))
-  //   ))
-  // URl+=obj.userLogin.location
-  // console.log(URL+((obj.userLogin).map()))
-  // const link1=`http://localhost:3001/PatientMain/finddoctor/${id}/chatbox`;
+
   return (
     <div>
       <h1>hello i'm in Appointment page.</h1>
       {console.log(obj.userLogin)}
       { <DoctorProfileAppointment userLogin={obj.userLogin}/>}
         <button type='submit' onClick={PostData} ><Link to='/Patientmain'>Submit</Link></button>
-      {/* /* <Link to="/chatbox">
+      {/* <Link to="/chatbox">
         <button>Chatbox</button>
       </Link> */}
+      <button type='submit' onClick={Chat}>Chatbox</button>
     </div>
   )
 }
