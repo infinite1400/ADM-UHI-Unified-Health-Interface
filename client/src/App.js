@@ -25,6 +25,7 @@ import Checklocationpage from './components/Patient/checklocationpage'
 import { checkTargetForNewValues } from 'framer-motion'
 import Message from "../src/messagess/messages"
 import Chatbox from './components/chatbox/chatbox'
+import Chatboxp from './components/chatbox/ChatboxPatient'
 
 // import Chat from './components/chatbox/chat'
 const App = () => {
@@ -56,9 +57,13 @@ const App = () => {
           path="/PatientMain/finddoctor/:id"
           element={<Appointment/>}
         />
+
         <Route exact path ="/chats" element={<Message/>}/>
         <Route exact path="/DoctorMain/history/:id"
         element={<Chatbox/>}/>
+
+        <Route exact path="/PatientMain/finddoctor/chat/:id" element={<Chatboxp/>}/>
+
       </Routes>
     </>
   )

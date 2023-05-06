@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
 const cookie_key = "pandey";
 console.log("lol")
+console.log("gdgdgd")
 const Profile = ({ userLogin }) => {
   bake_cookie(cookie_key, userLogin);
 

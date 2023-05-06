@@ -65,6 +65,7 @@ const DoctorProfileAppointment = ({ userLogin }) => {
                       <p>Rating</p> <p>:</p> <p>{movie.rating}</p>
                     </div>
                   </div>
+                 
                 </form>
 				</div>
             </section>
