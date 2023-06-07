@@ -5,65 +5,70 @@ import axios from 'axios';
 import './chatbox.css';
 import { useRef } from 'react';
 import { format } from 'timeago.js';
+import io from "socket.io-client";
+const endpoint="http://localhost:3000";
+var socket;
 const URL = 'http://localhost:3001/DoctorMain/history';
 const URL1 = 'http://localhost:3000/newchat/';
 const URL2 = 'http://localhost:3000/newmessage/';
+const doctormail = read_cookie('dev');
+
 
 const Chatbox = () => {
-  const docemail = read_cookie('dev');
-  const [email, setemail] = useState('');
-  const [currentmsg, setcurrentmsg] = useState(null);
-  const { id } = useParams();
-  const patientemail = id;
-  console.log(patientemail);
-
-  const fetchdetails = () => {
-    fetch(`http://localhost:3001/DoctorMain/history/${id}`)
-      .then((res) => res.json())
-      .then((data) => setemail(data));
-  };
-
-  useEffect(() => {
-    fetchdetails();
-  }, [email]);
-
-const doctormail = read_cookie('dev');
-  console.log(doctormail);
+  
+  
+    const {id}=useParams()
+    const patientemail=id;
+   
+    console.log(patientemail)
 
   const [object, Setobject] = useState([]);
 
-  const [currentmessage, Setcurrentmessage] = useState([{}]);
+  const [currentmessage, Setcurrentmessage] = useState([]);
 
   const [message,newmessage]= useState([]);
 
+  const [userconnected,setuserconnected]=useState(false)
+
+  const [newmsg,setnewmsg]=useState([])
+  
   useEffect(() => {
     const getconversation = async () => {
       try {
         const res = await axios.get(URL1 + doctormail);
         Setobject(res.data);
-        console.log(res);
+        console.log(res.data)
       } catch (err) {
         console.log(err);
       }
     };
     getconversation();
-  }, [doctormail]);
-
-  var conversationId = null;
-  for (var j = 0; j < object.length; j++) {
-    const arr = object[j].members;
-    if (arr[0] === docemail && arr[1] === patientemail) {
-      conversationId = object[j]._id;
+  }, []);
+     
+    var conversationId=null;
+    
+    for (var j = 0; j < object.length; j++) {
+      const arr = object[j].members;
+      if (arr[1] === doctormail && arr[0] === patientemail) {
+        conversationId=object[j]._id;
+      }
     }
-  }
+ 
   console.log(conversationId);
-  
+
+  useEffect(()=>{
+    socket=io(endpoint);
+    socket.emit("setup",conversationId)
+    socket. on("connection",()=>setuserconnected(true))
+ })
+ 
   useEffect(() => {
     const getmessages = async () => {
       try {
         const res = await axios.get(URL2 + conversationId);
-        console.log(res);
+        //console.log(res);
         Setcurrentmessage(res.data);
+        console.log(currentmessage)
       } catch (err) {
         console.log(err);
       }
@@ -72,11 +77,16 @@ const doctormail = read_cookie('dev');
       getmessages();
     }
   }, [conversationId]);
-
   // console.log(currentmessage[0]);
 
   // const own = currentmessage[0];
   // console.log(own);
+
+  useEffect(()=>{
+    socket.on("messagerecieved",(newmessage)=>{
+      Setcurrentmessage([...currentmessage,newmessage])
+    })
+  })
 
   const sendmessage= async (e)=>{
       // console.log(e)
@@ -104,8 +114,9 @@ const doctormail = read_cookie('dev');
       if(body.text!=""){
         try {
           const res= await axios.post(URL2,body)
-          console.log(res)
+         // console.log(res)
           Setcurrentmessage([...currentmessage,res.data]);
+          socket.emit("newmessage",res.data)
         } catch (error) {
           console.log(error)
         }

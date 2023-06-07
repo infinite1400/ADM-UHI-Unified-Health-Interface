@@ -5,6 +5,9 @@ import axios from 'axios';
 import './chatbox.css';
 import { useRef } from 'react';
 import { format } from 'timeago.js';
+import io from "socket.io-client";
+const endpoint="http://localhost:3000";
+var socket;
 const URL = 'http://localhost:3001/PatientMain/finddoctor/chat';
 const URL1 = 'http://localhost:3000/newchat/';
 const URL2 = 'http://localhost:3000/newmessage/';
@@ -15,15 +18,15 @@ function ChatboxPatient() {
   const [currentmsg, setcurrentmsg] = useState(null);
   const { id } = useParams();
   const doctoremail = id;
-  const fetchdetails = () => {
-    fetch(`http://localhost:3001/DoctorMain/history/${id}`)
-    .then((res) => res.json())
-    .then((data) => setemail(data));
-  };
+  // const fetchdetails = () => {
+  //   fetch(`http://localhost:3001/DoctorMain/history/${id}`)
+  //   .then((res) => res.json())
+  //   .then((data) => setemail(data));
+  // };
   
-  useEffect(() => {
-    fetchdetails();
-  }, [email]);
+  // useEffect(() => {
+  //   fetchdetails();
+  // }, [email]);
   
 console.log(patientemail);
 console.log(doctoremail)
@@ -33,6 +36,8 @@ console.log(doctoremail)
   const [currentmessage, Setcurrentmessage] = useState([{}]);
 
   const [message,newmessage]= useState([]);
+
+   const [userconnected,setuserconnected]=useState(false)
 
   useEffect(() => {
     const getconversation = async () => {
@@ -45,7 +50,7 @@ console.log(doctoremail)
       }
     };
     getconversation();
-  }, [doctoremail]);
+  }, []);
 
   var conversationId = null;
   for (var j = 0; j < object.length; j++) {
@@ -55,6 +60,14 @@ console.log(doctoremail)
     }
   }
   console.log(conversationId);
+
+  
+  useEffect(()=>{
+    socket=io(endpoint);
+    socket.emit("setup",conversationId)
+    socket. on("connection",()=>setuserconnected(true))
+ })
+ 
   
   useEffect(() => {
     const getmessages = async () => {
@@ -75,6 +88,12 @@ console.log(doctoremail)
 
   // const own = currentmessage[0];
   // console.log(own);
+
+  useEffect(()=>{
+    socket.on("messagerecieved",(newmessage)=>{
+      Setcurrentmessage([...currentmessage,newmessage])
+    })
+  })
 
   const sendmessage= async (e)=>{
       // console.log(e)
@@ -104,6 +123,7 @@ console.log(doctoremail)
           const res= await axios.post(URL2,body)
           console.log(res)
           Setcurrentmessage([...currentmessage,res.data]);
+          socket.emit("newmessage",res.data)
         } catch (error) {
           console.log(error)
         }

@@ -50,10 +50,27 @@ const io = socket(server, {
     }
 });
 
-io.on("connection",socket=>{
+io.on("connection",(socket)=>{
+  console.log("user connected")
 
+  socket.on("setup",(conversationId)=>{
+    socket.join(conversationId)
+    console.log(conversationId)
+    socket.emit("connected")
+  })
+
+
+    socket.on("newmessage" ,(data)=>{
+        console.log(data.conversationId)
+        io.to(data.conversationId).emit("messagerecieved",data)
+    })
+
+  socket.on("disconnect",()=>{
+    console.log("user disconnected");
+
+  })
 })
-//ddfj
+
 server.listen(3000,()=>{
     console.log("server running on 3000")
 })
