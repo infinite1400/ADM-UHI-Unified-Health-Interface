@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 // import star from "./star.png";
+const URL1="http://localhost:3001/DoctorMain/history/"
 const cookie_key = "murari";
 // import { useNavigate } from "react-router-dom";
 
@@ -50,6 +51,11 @@ const Table = ({ database }) => {
     }
   };
 
+  const openchat=async(e,email)=>{
+    e.preventDefault();
+    navigate(email);
+  }
+
   
 
 
@@ -59,6 +65,11 @@ const Table = ({ database }) => {
         <p className={styles.title_tab}>Name</p>
         <p className={styles.genre_tab}>Mobile Number</p>
         <p className={styles.genre_tab}>Done</p>
+        <p className={styles.genre_tab}>Chat</p>
+
+
+       {console.log(databases)};
+
         {/* <p className={styles.rating_tab}>Rating</p>
         <p className={styles.rating_tab}>Appointment</p> */}
       </div>
@@ -76,6 +87,11 @@ const Table = ({ database }) => {
           <div className={styles.rating_container}>
             <p className={styles.movie_rating}>
               <button onClick={event=>PostData(event,movie._id)}>Done</button>
+            </p>
+          </div>
+          <div className={styles.rating_chat}>
+            <p className={styles.movie_rating}>
+              <button onClick={event=>openchat(event,movie.patientemail)}>Chat Box</button>
             </p>
           </div>
           {/* <div className={styles.rating_container}>
