@@ -19,7 +19,7 @@ const Table = ({ database }) => {
         <p className={styles.genre_tab}>Speciality</p>
         <p className={styles.genre_tab}>Experience</p>
         <p className={styles.rating_tab}>Rating</p>
-        <p className={styles.rating_tab}>Appointment</p>
+        {/* <p className={styles.rating_tab}>Appointment</p> */}
 
       </div>
       {databases.map((movie) => (

@@ -8,67 +8,73 @@ import { format } from 'timeago.js';
 import io from "socket.io-client";
 const endpoint="http://localhost:3000";
 var socket;
-const URL = 'http://localhost:3001/DoctorMain/history';
+const URL = 'http://localhost:3001/PatientMain/finddoctor/chat';
 const URL1 = 'http://localhost:3000/newchat/';
 const URL2 = 'http://localhost:3000/newmessage/';
-const doctormail = read_cookie('dev');
 
-
-const Chatbox = () => {
+function ChatboxPatient() {
+  const patientemail = read_cookie('ashutosh');
+  const [email, setemail] = useState('');
+  const [currentmsg, setcurrentmsg] = useState(null);
+  const { id } = useParams();
+  const doctoremail = id;
+  // const fetchdetails = () => {
+  //   fetch(`http://localhost:3001/DoctorMain/history/${id}`)
+  //   .then((res) => res.json())
+  //   .then((data) => setemail(data));
+  // };
   
+  // useEffect(() => {
+  //   fetchdetails();
+  // }, [email]);
   
-    const {id}=useParams()
-    const patientemail=id;
-   
-    console.log(patientemail)
+console.log(patientemail);
+console.log(doctoremail)
 
   const [object, Setobject] = useState([]);
 
-  const [currentmessage, Setcurrentmessage] = useState([]);
+  const [currentmessage, Setcurrentmessage] = useState([{}]);
 
   const [message,newmessage]= useState([]);
 
-  const [userconnected,setuserconnected]=useState(false)
+   const [userconnected,setuserconnected]=useState(false)
 
-  const [newmsg,setnewmsg]=useState([])
-  
   useEffect(() => {
     const getconversation = async () => {
       try {
-        const res = await axios.get(URL1 + doctormail);
+        const res = await axios.get(URL1 + patientemail);
         Setobject(res.data);
-        console.log(res.data)
+        console.log(res);
       } catch (err) {
         console.log(err);
       }
     };
     getconversation();
   }, []);
-     
-    var conversationId=null;
-    
-    for (var j = 0; j < object.length; j++) {
-      const arr = object[j].members;
-      if (arr[1] === doctormail && arr[0] === patientemail) {
-        conversationId=object[j]._id;
-      }
+
+  var conversationId = null;
+  for (var j = 0; j < object.length; j++) {
+    const arr = object[j].members;
+    if (arr[0] === patientemail && arr[1] === doctoremail) {
+      conversationId = object[j]._id;
     }
- 
+  }
   console.log(conversationId);
 
+  
   useEffect(()=>{
     socket=io(endpoint);
     socket.emit("setup",conversationId)
     socket. on("connection",()=>setuserconnected(true))
  })
  
+  
   useEffect(() => {
     const getmessages = async () => {
       try {
         const res = await axios.get(URL2 + conversationId);
-        //console.log(res);
+        console.log(res);
         Setcurrentmessage(res.data);
-        console.log(currentmessage)
       } catch (err) {
         console.log(err);
       }
@@ -77,6 +83,7 @@ const Chatbox = () => {
       getmessages();
     }
   }, [conversationId]);
+
   // console.log(currentmessage[0]);
 
   // const own = currentmessage[0];
@@ -93,8 +100,8 @@ const Chatbox = () => {
       e.preventDefault()
       if(conversationId === null){
         const body={
-          senderId:doctormail,
-          receiverId:patientemail
+          senderId:patientemail,
+          receiverId:doctoremail
         }
         try {
           const res= await axios.post(URL1,body)
@@ -105,8 +112,8 @@ const Chatbox = () => {
     
       }
       const body={
-        sender:doctormail,
-        receiver:patientemail,
+        sender:patientemail,
+        receiver:doctoremail,
         conversationId:conversationId,
         text:message
       }
@@ -114,7 +121,7 @@ const Chatbox = () => {
       if(body.text!=""){
         try {
           const res= await axios.post(URL2,body)
-         // console.log(res)
+          console.log(res)
           Setcurrentmessage([...currentmessage,res.data]);
           socket.emit("newmessage",res.data)
         } catch (error) {
@@ -131,7 +138,6 @@ const Chatbox = () => {
       // console.log("hello world")
     chatboxRef.current.scrollIntoView();
   });
-
 
   return (
     <>
@@ -162,6 +168,6 @@ const Chatbox = () => {
   </>
     
   );
-};
+}
 
-export default Chatbox;
+export default ChatboxPatient

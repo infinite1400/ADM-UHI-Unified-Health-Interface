@@ -47,7 +47,7 @@ const Profile = ({ userLogin }) => {
 
                   <div className={styles.formgroup}>
                     <div className={styles.name}>
-                      <p>Age</p> <p>:</p> <p>{movie.location}</p>
+                      <p>Location</p> <p>:</p> <p>{movie.location}</p>
                     </div>
                   </div>
                   <div className={styles.formgroup}>
@@ -67,7 +67,7 @@ const Profile = ({ userLogin }) => {
                   </div>
                   <div className={styles.formgroup}>
                     <div className={styles.name}>
-                      <p>Ratin</p> <p>:</p> <p>{movie.rating}</p>
+                      <p>Rating</p> <p>:</p> <p>{movie.rating}</p>
                     </div>
                   </div>
                 </form>

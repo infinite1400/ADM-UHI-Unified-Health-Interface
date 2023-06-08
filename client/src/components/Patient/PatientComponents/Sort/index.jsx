@@ -8,7 +8,8 @@ const Sort = ({ sort, setSort }) => {
 	const onArrowChange = () => {
 		if (sort.order === "asc") {
 			setSort({ sort: sort.sort, order: "desc" });
-		} else {
+		}
+		else {
 			setSort({ sort: sort.sort, order: "asc" });
 		}
 	};

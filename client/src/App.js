@@ -21,8 +21,11 @@ import DoctorProfile from './components/Docter/doctorprofile'
 // import Finddoctorprofile from './components/Patient/profile'
 import Appointment from './components/Patient/appointment'
 import Appointmenthistory from './components/Docter/appointmenthistory'
+import Checklocationpage from './components/Patient/checklocationpage'
+import { checkTargetForNewValues } from 'framer-motion'
 import Message from "../src/messagess/messages"
 import Chatbox from './components/chatbox/chatbox'
+import Chatboxp from './components/chatbox/ChatboxPatient'
 
 // import Chat from './components/chatbox/chat'
 const App = () => {
@@ -31,10 +34,11 @@ const App = () => {
       {/* <Navbar/> */}
       <Routes>
         <Route exact path="/" element={<Landing />} />
+        <Route exact path="/checklocationpage" element={<Checklocationpage />}/>
         <Route exact path="/Doctor" element={<Doctor />} />
         <Route exact path="/DoctorMain" element={<DoctorMain />} />
         <Route exact path="/DoctorMain/history" element={<Appointmenthistory />} />
-        <Route exact path="/DoctorMain/profile" element={<DoctorProfile />} />
+        <Route exact path="/DoctorMain/Doctormain/profile" element={<DoctorProfile />} />
         <Route exact path="/Doctor/Signup" element={<DoctorSignup />} />
         <Route exact path="/Doctor/Login" element={<Doctorlogin />} />
         <Route exact path='/PatientMain/findDoctor' element={<FindDoctor/>}/>
@@ -51,13 +55,15 @@ const App = () => {
         {/* <Route exact path="/chat" element={<Chat />} /> */}
         <Route 
           path="/PatientMain/finddoctor/:id"
-          element={<Appointment/>
-
-          }
+          element={<Appointment/>}
         />
+
         <Route exact path ="/chats" element={<Message/>}/>
         <Route exact path="/DoctorMain/history/:id"
         element={<Chatbox/>}/>
+
+        <Route exact path="/PatientMain/finddoctor/chat/:id" element={<Chatboxp/>}/>
+
       </Routes>
     </>
   )

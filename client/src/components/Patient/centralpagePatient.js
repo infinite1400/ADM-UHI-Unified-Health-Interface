@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom'
 import Github from "../../img/github.png";
 import LinkedIn from "../../img/linkedin.png";
 import Instagram from "../../img/instagram.png";
-import Vector1 from "../../img/Vector1.png";
-import Vector2 from "../../img/Vector2.png";
-// import medi from "../../img/medi.png"
+import Vector1 from "../../img/hospital.jpg";
+// import Vector2 from "../../img/Vector2.png";
 function Patient() {
   return (
     <div>
@@ -36,8 +35,10 @@ function Patient() {
       </div>
       {/* right image side */}
       <div className="i-right">
+        <div className='img'>
         <img src={Vector1} alt="" />
-        <img src={Vector2} alt="" />
+        </div>
+        {/* <img src={Vector2} alt="" /> */}
         {/* <img src={medi} alt="" /> */}
         {/* animation */}
         {/* <motion.img

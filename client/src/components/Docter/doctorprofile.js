@@ -20,7 +20,7 @@ function DoctorProfile() {
             try{
                 const url=`${URL}?email=${email.email}`;
             
-                //console.log(url);
+                console.log(url);
                 const {data}=await axios.get(url);
                 //setObj(data);
                 //bake_cookie(cookie_key,data);
@@ -45,6 +45,7 @@ function DoctorProfile() {
                 <div className='body'>
                     <div className='table_container'>
                          {console.log(obj.userLogin)}
+                         {console.log("hello")}
                         { <Profile userLogin={obj.userLogin}/> }
                     </div>
                 </div>

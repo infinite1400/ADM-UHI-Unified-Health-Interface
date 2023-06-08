@@ -51,64 +51,64 @@ const Patientsignup = () => {
 
   return (
     <>
-		<section className='signup'>
-			<div className='container mt-5'>
-				<div className='signup-content'>
-					<div className='signup-form'>
-						<h2 className='form-title'>Sign up</h2>
-						<form method='POST' className='register-form' id='register-form'>
-							<div className='form-group'>
-								Name : <input type="text" name="name" id="name" autoComplete='off'
-								value={user.name}
-								onChange={handleInputs}
-								placeholder='Enter Your Name'/>
+		<div className='maindivdoctorregister'>
+				<div className='wrapper'>
+					<div class="title">Registration</div>
+					<form method='POST' className='form' id='register-form'>
+						<div className='user-details'>
+							<div className='doctorregisterinput'>
+								<span class="details">Full Name</span>
+								<input className='input' type="text" name="name" id="name" autoComplete='off'
+									value={user.name}
+									onChange={handleInputs}
+									placeholder='Enter Your Name' />
 							</div>
-							<div className='form-group'>
-								Phone No: <input type="number" name="phone" id="phone" autoComplete='off'
-								value={user.Phone}
-								onChange={handleInputs}
-								placeholder='Enter Your Number'/>
+							<div className='doctorregisterinput'>
+								<span class="details">Phone Number</span><input className='input' type="number" name="phone" id="phone" autoComplete='off'
+									value={user.phone}
+									onChange={handleInputs}
+									placeholder='Enter Your Number' />
 							</div>
-							<div className='form-group'>
-								Age : <input type="number" name="Age" id="Age" autoComplete='off'
-								value={user.Age}
-								onChange={handleInputs}
-								placeholder='Enter Your Age'/>
+							<div className='doctorregisterinput'>
+								<span class="details">Email</span>
+								 <input className='input' type="text" name="email" id="email" autoComplete='off' required
+									value={user.email}
+									onChange={handleInputs}
+									placeholder='Enter Your E-mail' />
 							</div>
-						
-							<div className='form-group'>
-								E-mail : <input type="text" name="email" id="email" autoComplete='off'
-								value={user.email}
-								onChange={handleInputs}
-								placeholder='Enter Your E-mail'/>
+							<div className='doctorregisterinput'>
+								<span class="details">Age</span> 
+								<input className='input' type="number" name="Age" id="Age" autoComplete='off' required
+									value={user.Age}
+									onChange={handleInputs}
+									placeholder='Enter your Age' />
 							</div>
-			
-							<div className='form-group'>
-								Password : <input type="password" name="password" id="password" autoComplete='off'
-								value={user.password}
-								onChange={handleInputs}
-								placeholder='Enter Password'/>
+							<div className='doctorregisterinput'>
+								<span class="details">Password</span> <input className='input' type="password" name="password" id="password" autoComplete='off' required
+									value={user.password}
+									onChange={handleInputs}
+									placeholder='Enter Password' />
 							</div>
-							<div className='form-group'>
-								Confirm password : <input type="password" name="cpassword" id="cpassword" autoComplete='off'
-								value={user.cpassword}
-								onChange={handleInputs}
-								placeholder='Re-enter password'/>
+							<div className='doctorregisterinput'>
+								<span class="details">Confirm Password</span> 
+								<input className='input' type="password" name="cpassword" id="cpassword" autoComplete='off' required
+									value={user.cpassword}
+									onChange={handleInputs}
+									placeholder='Re-enter password' />
 							</div>
-								</form>
-							<div className='form-group form-button'>
-								<input type='submit' name='signup' id='signup' className='form-submit'
+						</div>
+						<div className='button'>
+							<input type='submit' name='signup' id='signup' className='input'
 								value="Register"
 								onClick={PostData}
-								/>
-							</div>
-						<div className='already'>
-							<NavLink to="/Patient/login">I am already registered</NavLink>
+							/>
 						</div>
-					</div>
+						<div className='already'>
+							<NavLink to="/patient/login">I am already registered</NavLink>
+						</div>
+					</form>
 				</div>
 			</div>
-		</section>
 	</>
   )
 }

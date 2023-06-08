@@ -15,15 +15,15 @@ const Messages = () => {
     const getconversation= async ()=>{
       try{
         const res= await axios.get(URL+doctormail);
-        console.log(res);
+        //console.log(res);
         SetConversation(res.data);
-
+       console.log(res)
       }catch(err){
         console.log(err);
       }
     }
     getconversation();
-  },[]);
+  },[doctormail]);
 
 
 

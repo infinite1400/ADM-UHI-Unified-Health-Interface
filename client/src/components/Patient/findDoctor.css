@@ -1,9 +1,20 @@
-.wrapper {
-	width: 100%;
-	min-height: 100vh;
+html{
+	margin: 0;
+	padding: 0;
+}
+
+#findDoctor{
+	width: 100vw;
+	height: 100vh;
+}
+
+.wrapperfd {
+	width: 100vw;
+	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-color: green;
 }
 
 .container {
@@ -42,5 +53,8 @@
 }
 
 .filter_container {
-	flex: 1;
+	/* margin-top: 100px; */
+	position: fixed;
+	top: 0;
+	flex: 5;
 }
