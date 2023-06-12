@@ -9,7 +9,7 @@
 
 .patientmainimg {
   width: 115vh;
-  /* background-image: url('../../img/patientlogin.jpg'); */
+  background-image: url('../../img/patientlogin.jpg');
   background-size: 140vh;
   background-position: -100px;
 
