@@ -20,15 +20,7 @@
   
 }
 
-.patienttextdiv {
 
-  height: 45vh;
-  text-align: center;
-  padding-top: 20vh;
-  padding-right: 60vh;
-
-
-}
 
 .patientbuttondiv {
   height: 55vh;
@@ -83,7 +75,12 @@
     opacity: 0;
   }
 }
-p{
+.patienttextdiv {
+
+  height: 45vh;
+  text-align: center;
+  padding-top: 20vh;
+  padding-right: 60vh;
   font-family: Arial, sans-serif;
   font-size: 60px;
   font-weight: bold;
@@ -98,5 +95,23 @@ p{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  animation: fadeInOut 3s infinite;
+  animation: fadeInOut 2s infinite;
+
 }
+/* p{
+  font-family: Arial, sans-serif;
+  font-size: 60px;
+  font-weight: bold;
+  margin-left: 50px;
+  color: #3efe25;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  text-shadow: 1px 1px 1px #f40505;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  animation: fadeInOut 2s infinite;
+} */
