@@ -141,11 +141,12 @@ console.log(doctoremail)
 
   return (
     <>
+    <div className="chatboxmaindiv">
     {/* {window.scrollTo(0, document.body.scrollHeight)} */}
     {currentmessage.map((own)=>(
-      <div className={own.sender ? 'message own' : 'message'}>
+      <div className={(own.sender==patientemail) ? 'message own' : 'message'}>
       <div className="messageTop">
-        <img className="messageImg" alt="pics" />
+        {/* <img className="messageImg" alt="pics" /> */}
         <p className="messageText">{own.text}</p>
       </div>
       <div className="messageBottom">{format(own.createdAt)}</div>
@@ -164,7 +165,7 @@ console.log(doctoremail)
       </div>
    </div>
 
-
+   </div>
   </>
     
   );
