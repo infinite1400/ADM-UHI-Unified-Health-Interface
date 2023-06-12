@@ -55,7 +55,6 @@ const DoctorSignup = () => {
 		}
 
 	}
-
 	return (
 		<>
 			<div className='maindivdoctorregister'>
@@ -81,7 +80,7 @@ const DoctorSignup = () => {
 								 <input className='input' type="text" name="email" id="email" autoComplete='off' required
 									value={user.email}
 									onChange={handleInputs}
-									placeholder='Enter Your E-mail' />
+									placeholder='Enter Your E-mail'  />
 							</div>
 							<div className='doctorregisterinput'>
 								<span class="details">Experience</span> <input className='input' type="text" name="experience" id="experience" autoComplete='off' required
