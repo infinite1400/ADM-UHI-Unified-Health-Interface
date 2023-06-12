@@ -1,100 +1,99 @@
 .doctormaindiv {
-    height: 100%;
-    overflow: hidden;
-    overflow-y: hidden;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  
+  height: 100%;
+  overflow: hidden;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+.doctormainimg {
+  width: 115vh;
+  background-image: url('../../img/patientlogin.jpg');
+  background-size: 140vh;
+  background-position: -100px;
+
+}
+
+
+.doctorloginclass {
+}
+
+
+
+.doctorbuttondiv {
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.doctorbuttonclass {
+  margin-top: 10vh;
+  padding-top: 5vh;
+  margin-left: 20vh;
+  width: 30%;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #664fda;
+  color: white;
+  border: none;
+  border-radius: 5vh;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.doctorbuttonclass:hover {
+  background-color: #45a049;
+}
+
+.doctorbuttonclass:active {
+  background-color: #3e8e41;
+}
+
+.doctorbuttonclass:focus {
+  outline: none;
+}
+
+.doctorbuttonclass.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
   }
-  
-  .doctormainimg {
-    width: 115vh;
-    background-image: url('../../img/patientlogin.jpg');
-    background-size: 140vh;
-    background-position: -100px;
-  
+  50% {
+    opacity: 1;
   }
-  
-  
-  .doctorloginclass {
+  100% {
+    opacity: 0;
   }
-  
-  
-  
-  .doctorbuttondiv {
-    height: 55vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .doctorbuttonclass {
-    margin-top: 10vh;
-    padding-top: 5vh;
-    margin-left: 20vh;
-    width: 30%;
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    background-color: #664fda;
-    color: white;
-    border: none;
-    border-radius: 5vh;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .doctorbuttonclass:hover {
-    background-color: #45a049;
-  }
-  
-  .doctorbuttonclass:active {
-    background-color: #3e8e41;
-  }
-  
-  .doctorbuttonclass:focus {
-    outline: none;
-  }
-  
-  .doctorbuttonclass.disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-  
-  @keyframes fadeInOut {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  .doctortextdiv {
-  
-    height: 45vh;
-    text-align: center;
-    padding-top: 20vh;
-    padding-right: 60vh;
-    font-family: Arial, sans-serif;
-    font-size: 60px;
-    font-weight: bold;
-    margin-left: 50px;
-    color: #3efe25;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    word-spacing: 2px;
-    text-shadow: 1px 1px 1px #f40505;
-    line-height: 1.5;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    animation: fadeInOut 2s infinite;
-  
-  }
- 
+}
+.doctortextdiv {
+
+  height: 45vh;
+  text-align: center;
+  padding-top: 20vh;
+  padding-right: 60vh;
+  font-family: Arial, sans-serif;
+  font-size: 60px;
+  font-weight: bold;
+  margin-left: 50px;
+  color: #3efe25;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  text-shadow: 1px 1px 1px #f40505;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  animation: fadeInOut 2s infinite;
+
+}

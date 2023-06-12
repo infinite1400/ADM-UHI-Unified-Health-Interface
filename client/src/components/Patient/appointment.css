@@ -1,0 +1,5 @@
+.AppointmentDoctor{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* background-color: aqua; */
+}

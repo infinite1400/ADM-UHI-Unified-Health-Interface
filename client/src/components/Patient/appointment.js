@@ -6,7 +6,7 @@ import DoctorProfileAppointment from './DoctorProfile1';
 import { Navigate } from 'react-router-dom';
 const URL = "https://www.google.com/maps/place/";
 const URL1 = "http://localhost:3000/doctorDisp";
-
+import './appointment.css'
 function Appointment() {
 
   const [email, setemail] = useState("")
@@ -86,7 +86,7 @@ function Appointment() {
 
 
   return (
-    <div>
+    <div className='AppointmentDoctor' style={{ overflowY: 'scroll', overflowX: 'hidden' }}>
       <h1>hello i'm in Appointment page.</h1>
       {console.log(obj.userLogin)}
       { <DoctorProfileAppointment userLogin={obj.userLogin}/>}

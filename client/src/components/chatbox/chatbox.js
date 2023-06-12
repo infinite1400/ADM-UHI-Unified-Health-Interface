@@ -127,11 +127,10 @@ const Chatbox = () => {
   });
 
   return (
-    <>
-      <div className="chatboxmaindiv">
-        {/* {window.scrollTo(0, document.body.scrollHeight)} */}
+    <div className='chatboxdiv'>
+      <div className="chatboxmaindiv" >
         {currentmessage.map((own) => (
-          <div className={(own.sender==doctormail) ? "message own" : "message"}>
+          <div className={(own.sender == doctormail) ? "message own" : "message"}>
             <div className="messageTop">
               {/* <img className="messageImg" alt="pics" /> */}
               <p className="messageText">{own.text}</p>
@@ -141,7 +140,6 @@ const Chatbox = () => {
         ))}
 
         <div>
-          {/* <input type="text" name="chats" id="chats" ></input> */}
           <div className="chatboxtextarea" ref={chatboxRef}>
             <textarea
               name="chats"
@@ -152,7 +150,7 @@ const Chatbox = () => {
               value={message}
             ></textarea>
             <button
-              className="buttonsend"
+              className="chatboxbuttonsend"
               type="button"
               name="sendchats"
               id="sendchats"
@@ -163,7 +161,8 @@ const Chatbox = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
+
   );
 };
 

@@ -6,7 +6,7 @@ import './chatbox.css';
 import { useRef } from 'react';
 import { format } from 'timeago.js';
 import io from "socket.io-client";
-const endpoint="http://localhost:3000";
+const endpoint = "http://localhost:3000";
 var socket;
 const URL = 'http://localhost:3001/PatientMain/finddoctor/chat';
 const URL1 = 'http://localhost:3000/newchat/';
@@ -23,21 +23,21 @@ function ChatboxPatient() {
   //   .then((res) => res.json())
   //   .then((data) => setemail(data));
   // };
-  
+
   // useEffect(() => {
   //   fetchdetails();
   // }, [email]);
-  
-console.log(patientemail);
-console.log(doctoremail)
+
+  console.log(patientemail);
+  console.log(doctoremail)
 
   const [object, Setobject] = useState([]);
 
   const [currentmessage, Setcurrentmessage] = useState([{}]);
 
-  const [message,newmessage]= useState([]);
+  const [message, newmessage] = useState([]);
 
-   const [userconnected,setuserconnected]=useState(false)
+  const [userconnected, setuserconnected] = useState(false)
 
   useEffect(() => {
     const getconversation = async () => {
@@ -61,14 +61,14 @@ console.log(doctoremail)
   }
   console.log(conversationId);
 
-  
-  useEffect(()=>{
-    socket=io(endpoint);
-    socket.emit("setup",conversationId)
-    socket. on("connection",()=>setuserconnected(true))
- })
- 
-  
+
+  useEffect(() => {
+    socket = io(endpoint);
+    socket.emit("setup", conversationId)
+    socket.on("connection", () => setuserconnected(true))
+  })
+
+
   useEffect(() => {
     const getmessages = async () => {
       try {
@@ -89,85 +89,84 @@ console.log(doctoremail)
   // const own = currentmessage[0];
   // console.log(own);
 
-  useEffect(()=>{
-    socket.on("messagerecieved",(newmessage)=>{
-      Setcurrentmessage([...currentmessage,newmessage])
+  useEffect(() => {
+    socket.on("messagerecieved", (newmessage) => {
+      Setcurrentmessage([...currentmessage, newmessage])
     })
   })
 
-  const sendmessage= async (e)=>{
-      // console.log(e)
-      e.preventDefault()
-      if(conversationId === null){
-        const body={
-          senderId:patientemail,
-          receiverId:doctoremail
-        }
-        try {
-          const res= await axios.post(URL1,body)
-          console.log(res)
-        } catch (error) {
-          console.log(error)
-        }
-    
+  const sendmessage = async (e) => {
+    // console.log(e)
+    e.preventDefault()
+    if (conversationId === null) {
+      const body = {
+        senderId: patientemail,
+        receiverId: doctoremail
       }
-      const body={
-        sender:patientemail,
-        receiver:doctoremail,
-        conversationId:conversationId,
-        text:message
+      try {
+        const res = await axios.post(URL1, body)
+        console.log(res)
+      } catch (error) {
+        console.log(error)
       }
-      
-      if(body.text!=""){
-        try {
-          const res= await axios.post(URL2,body)
-          console.log(res)
-          Setcurrentmessage([...currentmessage,res.data]);
-          socket.emit("newmessage",res.data)
-        } catch (error) {
-          console.log(error)
-        }
-        newmessage("")
+
+    }
+    const body = {
+      sender: patientemail,
+      receiver: doctoremail,
+      conversationId: conversationId,
+      text: message
+    }
+
+    if (body.text != "") {
+      try {
+        const res = await axios.post(URL2, body)
+        console.log(res)
+        Setcurrentmessage([...currentmessage, res.data]);
+        socket.emit("newmessage", res.data)
+      } catch (error) {
+        console.log(error)
       }
+      newmessage("")
+    }
   }
   const chatboxRef = useRef();
 
-  
+
 
   useEffect(() => {
-      // console.log("hello world")
+    // console.log("hello world")
     chatboxRef.current.scrollIntoView();
   });
 
   return (
-    <>
-    <div className="chatboxmaindiv">
-    {/* {window.scrollTo(0, document.body.scrollHeight)} */}
-    {currentmessage.map((own)=>(
-      <div className={(own.sender==patientemail) ? 'message own' : 'message'}>
-      <div className="messageTop">
-        {/* <img className="messageImg" alt="pics" /> */}
-        <p className="messageText">{own.text}</p>
+    <div className='chatboxdiv'>
+      <div className="chatboxmaindiv">
+        {/* {window.scrollTo(0, document.body.scrollHeight)} */}
+        <div className='Messageclass'>
+          {currentmessage.map((own) => (
+            <div className={(own.sender == patientemail) ? 'message own' : 'message'}>
+              <div className="messageTop">
+                {/* <img className="messageImg" alt="pics" /> */}
+                <p className="messageText">{own.text}</p>
+              </div>
+              <div className="messageBottom">{format(own.createdAt)}</div>
+            </div>
+          ))}
+        </div>
+        <div>
+
+          {/* <input type="text" name="chats" id="chats" ></input> */}
+          <div className='chatboxtextarea' ref={chatboxRef}>
+            <textarea name="chats" id="chats" rows="4" columns="50"
+              onChange={(e) => newmessage(e.target.value)}
+              value={message}></textarea>
+            <button className='chatboxbuttonsend' type="button" name="sendchats" id="sendchats"
+              onClick={sendmessage}>Send</button>
+          </div>
+        </div>
       </div>
-      <div className="messageBottom">{format(own.createdAt)}</div>
     </div>
-    ))}
-    
-   <div>
-
-      {/* <input type="text" name="chats" id="chats" ></input> */}
-      <div className='chatboxtextarea' ref={chatboxRef}>
-      <textarea  name="chats" id="chats" rows="4" columns="50"
-      onChange={(e)=>newmessage(e.target.value)}
-      value={message}></textarea>
-      <button className='buttonsend' type="button" name="sendchats" id="sendchats"
-      onClick={sendmessage}>Send</button>
-      </div>
-   </div>
-
-   </div>
-  </>
-    
   );
 }
 
