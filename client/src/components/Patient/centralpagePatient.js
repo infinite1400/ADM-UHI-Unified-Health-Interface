@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import PatientNavbar from './PatientNavbar'
 import './centralpagePatient.css'
-import { Link } from 'react-router-dom'
-import Github from "../../img/github.png";
-import LinkedIn from "../../img/linkedin.png";
-import Instagram from "../../img/instagram.png";
+
+
 function Patient() {
 
   const [click, setClick] = useState(false);
