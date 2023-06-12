@@ -13,7 +13,7 @@ function Doctor() {
       </div>
 
       <div className='doctorloginclass'>
-        <div className="patienttextdiv">
+        <div className="doctortextdiv">
 
           <p>Welcome To UHI</p>
 
